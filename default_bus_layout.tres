@@ -1,0 +1,50 @@
+[gd_resource type="AudioBusLayout" format=3 uid="uid://c8y3hhilkqrnk"]
+
+[sub_resource type="AudioEffectDistortion" id="AudioEffectDistortion_j3pel"]
+resource_name = "Distortion"
+pre_gain = 60.0
+drive = 1.0
+post_gain = 24.0
+
+[sub_resource type="AudioEffectDistortion" id="AudioEffectDistortion_g28q7"]
+resource_name = "Distortion"
+pre_gain = 60.0
+drive = 1.0
+post_gain = 24.0
+
+[sub_resource type="AudioEffectDistortion" id="AudioEffectDistortion_n8wo2"]
+resource_name = "Distortion"
+pre_gain = 60.0
+drive = 1.0
+post_gain = 24.0
+
+[sub_resource type="AudioEffectDelay" id="AudioEffectDelay_j3pel"]
+resource_name = "Delay"
+tap1_delay_ms = 444.0
+
+[sub_resource type="AudioEffectDelay" id="AudioEffectDelay_g28q7"]
+resource_name = "Delay"
+
+[sub_resource type="AudioEffectEQ" id="AudioEffectEQ_j3pel"]
+resource_name = "EQ"
+band_db/32_hz = 24.0
+band_db/100_hz = 24.0
+band_db/320_hz = -60.0
+band_db/1000_hz = -60.0
+band_db/3200_hz = 24.0
+band_db/10000_hz = 24.0
+
+[resource]
+bus/0/volume_db = 6.0199986
+bus/0/effect/0/effect = SubResource("AudioEffectDistortion_j3pel")
+bus/0/effect/0/enabled = true
+bus/0/effect/1/effect = SubResource("AudioEffectDistortion_g28q7")
+bus/0/effect/1/enabled = true
+bus/0/effect/2/effect = SubResource("AudioEffectDistortion_n8wo2")
+bus/0/effect/2/enabled = true
+bus/0/effect/3/effect = SubResource("AudioEffectDelay_j3pel")
+bus/0/effect/3/enabled = true
+bus/0/effect/4/effect = SubResource("AudioEffectDelay_g28q7")
+bus/0/effect/4/enabled = true
+bus/0/effect/5/effect = SubResource("AudioEffectEQ_j3pel")
+bus/0/effect/5/enabled = true

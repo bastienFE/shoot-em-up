@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://ctvxkerqdxsg0"]
+
+[ext_resource type="Texture2D" uid="uid://cofylary07q2b" path="res://KennyAssets/SpaceShooterRedux/playerShip1_blue.png" id="1_4flbx"]
+[ext_resource type="Script" uid="uid://d07gxhp3jfomg" path="res://Scripts/player.gd" id="1_onrkg"]
+[ext_resource type="PackedScene" uid="uid://cskahkn4kgkso" path="res://Scenes/weapon.tscn" id="3_vgqql"]
+[ext_resource type="PackedScene" uid="uid://dj4onxjx55pfm" path="res://Scenes/bullet.tscn" id="4_fkybt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4flbx"]
+size = Vector2(44, 56)
+
+[node name="Player" type="CharacterBody2D" unique_id=2068344167]
+collision_mask = 0
+script = ExtResource("1_onrkg")
+
+[node name="WeaponLeft" parent="." unique_id=842732778 instance=ExtResource("3_vgqql")]
+position = Vector2(-46, -6)
+bullet_scene = ExtResource("4_fkybt")
+
+[node name="WeaponLeft2" parent="." unique_id=338399161 instance=ExtResource("3_vgqql")]
+position = Vector2(-26.01, -4.975)
+bullet_scene = ExtResource("4_fkybt")
+
+[node name="WeaponMiddle" parent="." unique_id=2016416212 instance=ExtResource("3_vgqql")]
+position = Vector2(0, -37.69)
+bullet_scene = ExtResource("4_fkybt")
+
+[node name="WeaponRight" parent="." unique_id=1096301191 instance=ExtResource("3_vgqql")]
+position = Vector2(46, -6)
+bullet_scene = ExtResource("4_fkybt")
+
+[node name="WeaponRight2" parent="." unique_id=1978929027 instance=ExtResource("3_vgqql")]
+position = Vector2(23.275, -4.975)
+bullet_scene = ExtResource("4_fkybt")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=228433589]
+texture = ExtResource("1_4flbx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=628174318]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_4flbx")
