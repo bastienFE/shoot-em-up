@@ -34,6 +34,8 @@ func die() -> void:
 	
 	$DieSfx.play()
 	
+	GameManager.add_score(1.0)
+	
 	queue_free()
 
 func current_speed() -> float:

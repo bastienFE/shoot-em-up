@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 buses/default_bus_layout="uid://c8y3hhilkqrnk"
 
+[autoload]
+
+GameManager="*uid://cms5ihm8mpp5y"
+
 [debug]
 
 gdscript/warnings/untyped_declaration=2

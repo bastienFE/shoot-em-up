@@ -3,8 +3,22 @@
 [ext_resource type="PackedScene" uid="uid://ctvxkerqdxsg0" path="res://Scenes/player.tscn" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://dtnl7mrf7dbqe" path="res://KennyAssets/SpaceShooterRedux/Backgrounds/purple.png" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://dfmwg5erisofx" path="res://Scenes/enemy_spawner.tscn" id="3_8gbba"]
+[ext_resource type="PackedScene" uid="uid://bb830e54nxi8f" path="res://Scenes/hud.tscn" id="4_jjvhh"]
+
+[sub_resource type="Environment" id="Environment_jjvhh"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 0.71
+glow_bloom = 0.78
+adjustment_enabled = true
+adjustment_brightness = 1.25
+adjustment_contrast = 1.055
+adjustment_saturation = 1.43
 
 [node name="Main" type="Node" unique_id=1131358737]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=730320574]
+environment = SubResource("Environment_jjvhh")
 
 [node name="Player" parent="." unique_id=1641870727 instance=ExtResource("1_ig7tw")]
 position = Vector2(368, 1195)
@@ -22,3 +36,6 @@ region_rect = Rect2(0, 0, 256, 256)
 position = Vector2(368, 625)
 
 [node name="EnemySpawner" parent="." unique_id=1991170024 instance=ExtResource("3_8gbba")]
+wait_time = 0.15
+
+[node name="HUD" parent="." unique_id=431748221 instance=ExtResource("4_jjvhh")]

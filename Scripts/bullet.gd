@@ -6,6 +6,7 @@ extends Area2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	rotation = randf_range(-rotation_range, rotation_range)
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -15,6 +16,8 @@ func _physics_process(delta: float) -> void:
 	
 	if position.y <= -$Sprite2D.texture.get_height():
 		queue_free()
+
+
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.has_method("takeDamage"):

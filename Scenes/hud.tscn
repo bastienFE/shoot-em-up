@@ -1,0 +1,111 @@
+[gd_scene format=3 uid="uid://bb830e54nxi8f"]
+
+[ext_resource type="Script" uid="uid://cn7fnnm1wlcis" path="res://Scripts/hud.gd" id="1_fccik"]
+[ext_resource type="FontFile" uid="uid://br54j4p52fe1j" path="res://KennyAssets/SpaceShooterRedux/Bonus/alagard.ttf" id="2_fccik"]
+[ext_resource type="Texture2D" uid="uid://ke4fw61ral4" path="res://KennyAssets/SpaceShooterRedux/UI/playerLife2_blue.png" id="3_bjfho"]
+[ext_resource type="Texture2D" uid="uid://cmlai63vc2fdx" path="res://KennyAssets/SpaceShooterRedux/UI/buttonBlue.png" id="4_t1xeu"]
+[ext_resource type="Texture2D" uid="uid://dl7r5v544c4qn" path="res://KennyAssets/SpaceShooterRedux/UI/buttonRed.png" id="5_36asn"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6fbih"]
+font = ExtResource("2_fccik")
+font_size = 77
+shadow_size = 23
+shadow_color = Color(0, 0, 0, 1)
+
+[node name="HUD" type="CanvasLayer" unique_id=431748221]
+process_mode = 3
+script = ExtResource("1_fccik")
+
+[node name="ScoreLabel" type="Label" parent="." unique_id=961572408]
+offset_left = 15.0
+offset_top = 15.0
+offset_right = 361.0
+offset_bottom = 88.0
+pivot_offset = Vector2(173, 46.5)
+text = "Score : 0.0"
+label_settings = SubResource("LabelSettings_6fbih")
+
+[node name="LifeContainer" type="HBoxContainer" parent="." unique_id=2107555914]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -191.44
+offset_top = 10.0
+offset_right = -72.44
+offset_bottom = 50.0
+grow_horizontal = 0
+scale = Vector2(1.525, 1.525)
+alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="LifeContainer" unique_id=728292530]
+layout_mode = 2
+texture = ExtResource("3_bjfho")
+
+[node name="TextureRect2" type="TextureRect" parent="LifeContainer" unique_id=870597466]
+layout_mode = 2
+texture = ExtResource("3_bjfho")
+
+[node name="TextureRect3" type="TextureRect" parent="LifeContainer" unique_id=274489460]
+layout_mode = 2
+texture = ExtResource("3_bjfho")
+
+[node name="DeathScreen" type="Control" parent="." unique_id=746657331]
+visible = false
+z_index = 1
+layout_mode = 3
+anchors_preset = 0
+offset_left = 112.0
+offset_top = 565.5
+offset_right = 152.0
+offset_bottom = 605.5
+
+[node name="Background" type="ColorRect" parent="DeathScreen" unique_id=2051602580]
+z_index = -1
+layout_mode = 0
+offset_left = -146.0
+offset_top = -590.5
+offset_right = 658.0
+offset_bottom = 732.5
+color = Color(0, 0, 0, 0.6313726)
+
+[node name="DeathBox" type="VBoxContainer" parent="DeathScreen" unique_id=1078420334]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+pivot_offset = Vector2(249, 125.5)
+
+[node name="DeathLabel" type="Label" parent="DeathScreen/DeathBox" unique_id=1599790931]
+layout_mode = 2
+text = "Thy hath died
+Score : "
+label_settings = SubResource("LabelSettings_6fbih")
+horizontal_alignment = 1
+
+[node name="Restart" type="Button" parent="DeathScreen/DeathBox" unique_id=383200625]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_fccik")
+theme_override_font_sizes/font_size = 35
+text = "Restart"
+icon = ExtResource("4_t1xeu")
+icon_alignment = 1
+
+[node name="Quit" type="Button" parent="DeathScreen/DeathBox" unique_id=1378681544]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_fccik")
+theme_override_font_sizes/font_size = 35
+text = "Quit"
+icon = ExtResource("5_36asn")
+icon_alignment = 1
+
+[node name="DamageFlash" type="ColorRect" parent="." unique_id=1293658273]
+offset_left = -55.0
+offset_top = -83.0
+offset_right = 823.0
+offset_bottom = 1376.0
+mouse_filter = 2
+color = Color(1, 0, 0, 0)
+
+[connection signal="pressed" from="DeathScreen/DeathBox/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="DeathScreen/DeathBox/Quit" to="." method="_on_quit_pressed"]

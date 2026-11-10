@@ -10,6 +10,7 @@ size = Vector2(100, 74)
 [node name="Enemy" type="Area2D" unique_id=1880627329]
 collision_layer = 2
 script = ExtResource("1_1f0kj")
+max_speed = 600.0
 max_health = 23
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=600274959]

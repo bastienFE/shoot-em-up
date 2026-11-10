@@ -9,15 +9,18 @@ var health: int
 
 func accelerate(acceleration: float) -> void:
 	speed += acceleration
+	GameManager.player_move.emit(speed)
 
 func moveRotation() -> void:
 	$Sprite2D.rotation = sin(speed / 1000)
+	GameManager.player_move.emit(speed)
 
 func decelerate() -> void:
 	speed *= 0.9
 
 func takeDamage(damage: int) -> void:
 	health -= damage
+	GameManager.player_life_changed.emit(health)
 	
 	if health <= 0:
 		var spark: Variant = load("res://Effects/explosion.tscn")
@@ -26,6 +29,9 @@ func takeDamage(damage: int) -> void:
 		instance.global_position = position
 
 		get_tree().current_scene.add_child(instance)
+		
+		GameManager.trigger_game_over()
+		
 		queue_free()
 
 func _ready() -> void:
