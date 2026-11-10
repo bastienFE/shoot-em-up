@@ -16,6 +16,7 @@ func getHealthRatio() -> float:
 
 func takeDamage(damage: int) -> void:
 	health -= damage
+	GameManager.add_score(10.0)
 
 	$Sprite2D.modulate = Color(1, getHealthRatio(), getHealthRatio())
 	
@@ -25,16 +26,25 @@ func takeDamage(damage: int) -> void:
 		die()
 
 func die() -> void:
-	var spark: Variant = load("res://Effects/explosion.tscn")
-	var instance: Variant = spark.instantiate()
+	var explosion: Variant = load("res://Effects/explosion.tscn")
+	var rocks: Variant = load("res://Effects/debris.tscn")
+	var explInstance: Variant = explosion.instantiate()
+	var rocksInstance: Variant = rocks.instantiate()
 
-	instance.global_position = position
+	explInstance.global_position = position
+	rocksInstance.global_position = position
 
-	get_tree().current_scene.add_child(instance)
+	get_tree().current_scene.add_child(explInstance)
+	get_tree().current_scene.add_child(rocksInstance)
 	
-	$DieSfx.play()
+	GameManager.add_score(200.0)
+	get_viewport().get_camera_2d().add_trauma(0.1)
 	
-	GameManager.add_score(1.0)
+	# un ralentit comme dans les Killing Floors avec 10% de chance quand un ennemi meurt
+	if randf_range(0, 1.0) < 0.1:
+		GameManager.hitStop(10, 0.5)
+	else:
+		GameManager.hitStop(0.5, 0.01)
 	
 	queue_free()
 

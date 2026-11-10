@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://br54j4p52fe1j"
-path="res://.godot/imported/alagard.ttf-7e11e91e6aa2e0ff9aa6d6a74b583cd7.fontdata"
+uid="uid://h6weeuqhme4t"
+path="res://.godot/imported/civitype.ttf-bffe25b030307dd68c0148131664d3a7.fontdata"
 
 [deps]
 
-source_file="res://KennyAssets/SpaceShooterRedux/Bonus/alagard.ttf"
-dest_files=["res://.godot/imported/alagard.ttf-7e11e91e6aa2e0ff9aa6d6a74b583cd7.fontdata"]
+source_file="res://KennyAssets/SpaceShooterRedux/Bonus/civitype.ttf"
+dest_files=["res://.godot/imported/civitype.ttf-bffe25b030307dd68c0148131664d3a7.fontdata"]
 
 [params]
 

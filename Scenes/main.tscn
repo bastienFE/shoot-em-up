@@ -3,7 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://ctvxkerqdxsg0" path="res://Scenes/player.tscn" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://dtnl7mrf7dbqe" path="res://KennyAssets/SpaceShooterRedux/Backgrounds/purple.png" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://dfmwg5erisofx" path="res://Scenes/enemy_spawner.tscn" id="3_8gbba"]
+[ext_resource type="Script" uid="uid://cnhv4y02igtbq" path="res://Scripts/camera_shake.gd" id="3_kry3j"]
 [ext_resource type="PackedScene" uid="uid://bb830e54nxi8f" path="res://Scenes/hud.tscn" id="4_jjvhh"]
+[ext_resource type="AudioStream" uid="uid://bmqpk03g3mem5" path="res://Effects/Sounds/ost.mp3" id="6_21xkr"]
 
 [sub_resource type="Environment" id="Environment_jjvhh"]
 background_mode = 3
@@ -17,25 +19,33 @@ adjustment_saturation = 1.43
 
 [node name="Main" type="Node" unique_id=1131358737]
 
+[node name="Background" type="Sprite2D" parent="." unique_id=1411228650]
+position = Vector2(371.00006, 638.5)
+scale = Vector2(3.265625, 5.3164063)
+texture = ExtResource("2_0xm2m")
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=872234549]
+scale = Vector2(3.265625, 5.3164063)
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=730320574]
 environment = SubResource("Environment_jjvhh")
 
 [node name="Player" parent="." unique_id=1641870727 instance=ExtResource("1_ig7tw")]
 position = Vector2(368, 1195)
 
-[node name="Background" type="Sprite2D" parent="." unique_id=1787968202]
-z_index = -1
-texture_repeat = 2
-position = Vector2(371.00006, 638.5)
-scale = Vector2(3.265625, 5.3164063)
-texture = ExtResource("2_0xm2m")
-region_enabled = true
-region_rect = Rect2(0, 0, 256, 256)
-
 [node name="Camera2D" type="Camera2D" parent="." unique_id=954519076]
+process_mode = 3
 position = Vector2(368, 625)
+ignore_rotation = false
+script = ExtResource("3_kry3j")
 
 [node name="EnemySpawner" parent="." unique_id=1991170024 instance=ExtResource("3_8gbba")]
 wait_time = 0.15
 
 [node name="HUD" parent="." unique_id=431748221 instance=ExtResource("4_jjvhh")]
+
+[node name="OST" type="AudioStreamPlayer2D" parent="." unique_id=1010086646]
+stream = ExtResource("6_21xkr")
+autoplay = true
+bus = &"Music"
+parameters/looping = true

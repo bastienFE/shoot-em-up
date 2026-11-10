@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://dd3fvrqi2glcm" path="res://Scripts/enemy.gd" id="1_1f0kj"]
 [ext_resource type="Texture2D" uid="uid://ca513f5s5u4ji" path="res://KennyAssets/SpaceShooterRedux/Enemies/enemyRed1.png" id="2_1f0kj"]
-[ext_resource type="AudioStream" uid="uid://cx3547f8ektqw" path="res://Effects/Sounds/whilelm_scream.ogg" id="3_afpow"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1f0kj"]
 size = Vector2(100, 74)
@@ -18,8 +17,5 @@ texture = ExtResource("2_1f0kj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1184858640]
 shape = SubResource("RectangleShape2D_1f0kj")
-
-[node name="DieSfx" type="AudioStreamPlayer2D" parent="." unique_id=400376824]
-stream = ExtResource("3_afpow")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

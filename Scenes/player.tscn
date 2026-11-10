@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://d07gxhp3jfomg" path="res://Scripts/player.gd" id="1_onrkg"]
 [ext_resource type="PackedScene" uid="uid://cskahkn4kgkso" path="res://Scenes/weapon.tscn" id="3_vgqql"]
 [ext_resource type="PackedScene" uid="uid://dj4onxjx55pfm" path="res://Scenes/bullet.tscn" id="4_fkybt"]
+[ext_resource type="AudioStream" uid="uid://cx3547f8ektqw" path="res://Effects/Sounds/whilelm_scream.ogg" id="5_fkybt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4flbx"]
 size = Vector2(44, 56)
@@ -38,3 +39,13 @@ texture = ExtResource("1_4flbx")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=628174318]
 position = Vector2(0, 5)
 shape = SubResource("RectangleShape2D_4flbx")
+
+[node name="HurtSfx" type="AudioStreamPlayer2D" parent="." unique_id=2128157171]
+process_mode = 3
+stream = ExtResource("5_fkybt")
+volume_db = 14.58
+bus = &"SFX"
+
+[node name="Invincibility" type="Timer" parent="." unique_id=1805623752]
+
+[connection signal="timeout" from="Invincibility" to="." method="_on_invincibility_timeout"]

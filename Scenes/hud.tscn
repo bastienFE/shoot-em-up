@@ -1,14 +1,20 @@
 [gd_scene format=3 uid="uid://bb830e54nxi8f"]
 
 [ext_resource type="Script" uid="uid://cn7fnnm1wlcis" path="res://Scripts/hud.gd" id="1_fccik"]
-[ext_resource type="FontFile" uid="uid://br54j4p52fe1j" path="res://KennyAssets/SpaceShooterRedux/Bonus/alagard.ttf" id="2_fccik"]
+[ext_resource type="FontFile" uid="uid://h6weeuqhme4t" path="res://KennyAssets/SpaceShooterRedux/Bonus/civitype.ttf" id="2_36asn"]
 [ext_resource type="Texture2D" uid="uid://ke4fw61ral4" path="res://KennyAssets/SpaceShooterRedux/UI/playerLife2_blue.png" id="3_bjfho"]
 [ext_resource type="Texture2D" uid="uid://cmlai63vc2fdx" path="res://KennyAssets/SpaceShooterRedux/UI/buttonBlue.png" id="4_t1xeu"]
 [ext_resource type="Texture2D" uid="uid://dl7r5v544c4qn" path="res://KennyAssets/SpaceShooterRedux/UI/buttonRed.png" id="5_36asn"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_6fbih"]
-font = ExtResource("2_fccik")
-font_size = 77
+font = ExtResource("2_36asn")
+font_size = 106
+shadow_size = 23
+shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8jye8"]
+font = ExtResource("2_36asn")
+font_size = 120
 shadow_size = 23
 shadow_color = Color(0, 0, 0, 1)
 
@@ -17,12 +23,12 @@ process_mode = 3
 script = ExtResource("1_fccik")
 
 [node name="ScoreLabel" type="Label" parent="." unique_id=961572408]
-offset_left = 15.0
-offset_top = 15.0
-offset_right = 361.0
-offset_bottom = 88.0
+offset_left = 36.0
+offset_top = 8.0
+offset_right = 382.0
+offset_bottom = 118.0
 pivot_offset = Vector2(173, 46.5)
-text = "Score : 0.0"
+text = "Score : 0"
 label_settings = SubResource("LabelSettings_6fbih")
 
 [node name="LifeContainer" type="HBoxContainer" parent="." unique_id=2107555914]
@@ -69,23 +75,37 @@ offset_bottom = 732.5
 color = Color(0, 0, 0, 0.6313726)
 
 [node name="DeathBox" type="VBoxContainer" parent="DeathScreen" unique_id=1078420334]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-pivot_offset = Vector2(249, 125.5)
+layout_mode = 1
+anchors_preset = -1
+offset_left = -150.99
+offset_top = -230.0
+offset_right = 663.01
+offset_bottom = 230.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(404.36, 350)
 
 [node name="DeathLabel" type="Label" parent="DeathScreen/DeathBox" unique_id=1599790931]
 layout_mode = 2
-text = "Thy hath died
-Score : "
+text = "Death be not proud
+Though some have called you
+ mighty and dreadfull
+Thou art not so
+"
 label_settings = SubResource("LabelSettings_6fbih")
+horizontal_alignment = 1
+
+[node name="DeathScoreLabel" type="Label" parent="DeathScreen/DeathBox" unique_id=1942894465]
+layout_mode = 2
+text = "Score : "
+label_settings = SubResource("LabelSettings_8jye8")
 horizontal_alignment = 1
 
 [node name="Restart" type="Button" parent="DeathScreen/DeathBox" unique_id=383200625]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_fccik")
-theme_override_font_sizes/font_size = 35
+theme_override_fonts/font = ExtResource("2_36asn")
+theme_override_font_sizes/font_size = 62
 text = "Restart"
 icon = ExtResource("4_t1xeu")
 icon_alignment = 1
@@ -93,8 +113,8 @@ icon_alignment = 1
 [node name="Quit" type="Button" parent="DeathScreen/DeathBox" unique_id=1378681544]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("2_fccik")
-theme_override_font_sizes/font_size = 35
+theme_override_fonts/font = ExtResource("2_36asn")
+theme_override_font_sizes/font_size = 62
 text = "Quit"
 icon = ExtResource("5_36asn")
 icon_alignment = 1

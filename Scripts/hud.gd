@@ -5,7 +5,7 @@ var score: float = 0.0
 @onready var scoreLabel: Label = $ScoreLabel
 @onready var deathScreen: Control = $DeathScreen
 @onready var deathBox: VBoxContainer = $DeathScreen/DeathBox
-@onready var deathLabel: Label = $DeathScreen/DeathBox/DeathLabel
+@onready var deathScoreLabel: Label = $DeathScreen/DeathBox/DeathScoreLabel
 @onready var damageFlash: ColorRect = $DamageFlash
 @onready var lifeContainer: HBoxContainer = $LifeContainer
 
@@ -16,7 +16,7 @@ func _ready() -> void:
 	GameManager.player_life_changed.connect(dreaming_in_red)
 
 func on_global_score_changed(score: float) -> void:
-	scoreLabel.text = "Score : " + str(score)
+	scoreLabel.text = "Score : " + str(int(score))
 
 	var tween: Tween = create_tween()
 	tween.tween_property(scoreLabel, "scale", Vector2(1.5, 1.5), 0.1)
@@ -32,13 +32,13 @@ func display_game_over_screen() -> void:
 	scoreLabel.hide()
 	lifeContainer.hide()
 	
-	deathLabel.text += str(score)
+	deathScoreLabel.text += str(int(score))
 
 	deathScreen.show()
 	
 	var tween: Tween = create_tween()
-	tween.tween_property(deathBox, "scale", Vector2(15, 15), 0.5)
-	tween.set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
+	tween.tween_property(deathBox, "scale", Vector2(2.0, 2.0), 0.5)
+	tween.set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT_IN)
 	tween.tween_property(deathBox, "scale", Vector2(1.0, 1.0), 1)
 	
 

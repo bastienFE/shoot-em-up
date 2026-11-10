@@ -1,11 +1,14 @@
 extends CharacterBody2D
 
+@onready var invincibilityTimer: Timer = $Invincibility
+
 @export var ACCELERATION: float = 70.0
 @export var MAX_HEALTH: int = 3.0
 const MOUSE_DEAD_ZONE: float = 10.0
 
 var speed: float = 0.0
 var health: int
+var invincible: bool = false
 
 func accelerate(acceleration: float) -> void:
 	speed += acceleration
@@ -19,8 +22,25 @@ func decelerate() -> void:
 	speed *= 0.9
 
 func takeDamage(damage: int) -> void:
+	if invincible:
+		return
+
 	health -= damage
+	
+	invincible = true
+	invincibilityTimer.start()
+	var blinkTween: Tween = get_tree().create_tween()
+	blinkTween.tween_property($Sprite2D, "modulate:a", 0.1, 0.25)
+	blinkTween.tween_property($Sprite2D, "modulate:a", 1, 0.25)
+	
+	blinkTween.set_loops(2)
+	blinkTween.play()
+
 	GameManager.player_life_changed.emit(health)
+	GameManager.hitStop(1, 0.05)
+	
+	$HurtSfx.pitch_scale = randf_range(0.7, 1.25)
+	$HurtSfx.play()
 	
 	if health <= 0:
 		var spark: Variant = load("res://Effects/explosion.tscn")
@@ -59,3 +79,7 @@ func _physics_process(delta: float) -> void:
 
 func getDistanceToFinger() -> Vector2:
 	return get_global_mouse_position() - position
+
+
+func _on_invincibility_timeout() -> void:
+	invincible = false
